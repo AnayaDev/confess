@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pengakuan Perasaan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      max-width: 400px;
+      text-align: center;
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      color: #5a189a;
+    }
+
+    p {
+      font-size: 1em;
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn.yes {
+      background: #8e2de2;
+      color: white;
+    }
+
+    .btn.yes:hover {
+      background: #5a189a;
+    }
+
+    .btn.no {
+      background: #e0e0e0;
+      color: #555;
+    }
+
+    .btn.no:hover {
+      background: #c2c2c2;
+    }
+
+    .response {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #4a148c;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Hai, Kamu 🌹</h1>
+    <p>Aku cuma pengen tanya satu hal...<br>Yang udah lama aku simpan dalam hati...</p>
+    <p style="font-weight: bold;">Maukah kau menjadi pacarku?</p>
+    
+    <button class="btn yes" onclick="jawaban('yes')">Iya, mau 💖</button>
+    <button class="btn no" onclick="jawaban('no')">Maaf ya 🙁</button>
+
+    <div class="response" id="response"></div>
+  </div>
+
+  <script>
+    function jawaban(pilihan) {
+      const res = document.getElementById('response');
+      const nomorWA = "6282123001839"; // GANTI dengan nomor WhatsApp kamu
+
+      let pesan = "";
+      if (pilihan === 'yes') {
+        pesan = "Dia menjawab IYA! 😍 Aku seneng banget!";
+        res.innerHTML = "Aku seneng banget! Mulai hari ini, kamu spesial buat aku. 💕";
+      } else {
+        pesan = "Dia menjawab MAAF 😢 Tapi setidaknya aku udah jujur.";
+        res.innerHTML = "Gak apa-apa, aku tetap senang bisa mengungkapkannya ke kamu. 🌸";
+      }
+
+      res.style.display = 'block';
+
+      // Kirim ke WhatsApp
+      const url = `https://wa.me/${nomorWA}?text=${encodeURIComponent("Confess Update:\n" + pesan)}`;
+      setTimeout(() => {
+        window.open(url, "_blank");
+      }, 1500); // buka WA setelah 1.5 detik
+    }
+  </script>
+
+</body>
+</html>
